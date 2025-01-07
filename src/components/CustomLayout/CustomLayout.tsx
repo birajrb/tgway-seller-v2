@@ -1,25 +1,71 @@
 import { useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme } from 'antd';
+import { Button, Layout, Menu, MenuProps, theme } from 'antd';
+import { Archive, CircleUser, Home, LogOut, ShoppingBag, Wallet } from 'lucide-react';
 
 import mobileLogo from '/fav.png';
 import logo from '/logo.png';
 
 import styles from './styles.module.css';
 
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    key: '/',
+    label: 'Dashboard',
+    icon: <Home height={16} width={16} />,
+  },
+  {
+    key: '/products',
+    label: 'Products',
+    icon: <ShoppingBag height={16} width={16} />,
+  },
+  {
+    key: '',
+    label: 'Orders & Reviews',
+    icon: <Archive height={16} width={16} />,
+    children: [
+      { key: '/order', label: 'Order', icon: <Archive height={16} width={16} /> },
+      { key: '/return', label: 'Return', icon: <Archive height={16} width={16} /> },
+      { key: '/review', label: 'Review', icon: <Archive height={16} width={16} /> },
+      { key: '/refund', label: 'Refund', icon: <Archive height={16} width={16} /> },
+    ],
+  },
+  {
+    key: '/income',
+    label: 'Income',
+    icon: <Wallet height={16} width={16} />,
+  },
+  {
+    key: '/my-account',
+    label: 'My Account',
+    icon: <CircleUser height={16} width={16} />,
+  },
+  {
+    key: '/logout',
+    label: 'Logout',
+    icon: <LogOut height={16} width={16} />,
+  },
+];
+
 const { Header, Sider, Content } = Layout;
 
 function CustomLayout() {
+  const navigate = useNavigate();
+
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const handleNavigation: MenuProps['onClick'] = (e) => {
+    navigate(e.key);
+  };
 
   return (
     <Layout>
@@ -40,26 +86,13 @@ function CustomLayout() {
             : <img src={logo} width={161} height={69} alt="tgway-logo" />}
         </div>
         <Menu
+          onClick={handleNavigation}
           theme="light"
           mode="inline"
           defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
-          ]}
+          items={
+            items
+          }
         />
       </Sider>
       <Layout style={{ marginLeft: collapsed ? 60 : 180 }}>
@@ -86,7 +119,7 @@ function CustomLayout() {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
