@@ -1,63 +1,41 @@
-import {
-  Archive,
-  CircleUser,
-  Home,
-  LogOut,
-  ShoppingBag,
-  Wallet,
-} from 'lucide-react';
+import { MenuItem } from '@/types';
+import { Archive, CircleUser, Home, LogOut, ShoppingBag, Wallet } from 'lucide-react';
 
-export const sidebarItems = [
+export const sidebarItems: MenuItem[] = [
   {
-    label: 'Dashboard',
     key: '/',
-    icon: <Home className="h-4 w-4" />,
+    label: 'Dashboard',
+    icon: <Home height={16} width={16} />,
   },
   {
-    label: 'Products',
     key: '/products',
-    icon: <ShoppingBag className="h-4 w-4" />,
+    label: 'Products',
+    icon: <ShoppingBag height={16} width={16} />,
   },
   {
-    label: 'Order & Review',
-    icon: <Archive className="h-4 w-4" />,
-    subnav: [
-      {
-        label: 'Order',
-        key: '/order',
-        icon: <Archive className="h-4 w-4" />,
-      },
-      {
-        label: 'Return',
-        key: '/return',
-        icon: <Archive className="h-4 w-4" />,
-      },
-      {
-        label: 'Review',
-        key: '/review',
-        icon: <Archive className="h-4 w-4" />,
-      },
-
-      {
-        label: 'Refund',
-        key: '/refund',
-        icon: <Archive className="h-4 w-4" />,
-      },
+    key: '',
+    label: 'Orders & Reviews',
+    icon: <Archive height={16} width={16} />,
+    children: [
+      { key: '/order', label: 'Order', icon: <Archive height={16} width={16} /> },
+      { key: '/return', label: 'Return', icon: <Archive height={16} width={16} /> },
+      { key: '/review', label: 'Review', icon: <Archive height={16} width={16} /> },
+      { key: '/refund', label: 'Refund', icon: <Archive height={16} width={16} /> },
     ],
   },
   {
-    label: 'Income',
     key: '/income',
-    icon: <Wallet className="h-4 w-4" />,
+    label: 'Income',
+    icon: <Wallet height={16} width={16} />,
   },
   {
-    label: 'My Account',
     key: '/my-account',
-    icon: <CircleUser className="h-4 w-4" />,
+    label: 'My Account',
+    icon: <CircleUser height={16} width={16} />,
   },
   {
+    key: '/logout',
     label: 'Logout',
-    key: '/',
-    icon: <LogOut className="h-4 w-4" />,
+    icon: <LogOut height={16} width={16} />,
   },
 ];
