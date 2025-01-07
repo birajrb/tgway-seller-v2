@@ -1,0 +1,12 @@
+.imageContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileLogo{
+    width: 50px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
