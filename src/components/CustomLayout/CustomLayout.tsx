@@ -6,11 +6,11 @@ import {
 } from '@ant-design/icons';
 import { Button, Layout, Menu, MenuProps, theme } from 'antd';
 
+import { sidebarItems } from '@/constants';
+import styles from './styles.module.css';
+
 import mobileLogo from '/fav.png';
 import logo from '/logo.png';
-
-import styles from './styles.module.css';
-import { sidebarItems } from '@/constants';
 
 const { Header, Sider, Content } = Layout;
 
@@ -55,7 +55,7 @@ function CustomLayout() {
         />
       </Sider>
       <Layout style={{ marginLeft: collapsed ? 80 : 240 }}>
-        <Header style={{ padding: 0, background: colorBgContainer, position: "fixed", width: "100vw", zIndex: "10" }}>
+        <Header style={{ padding: 0, background: colorBgContainer, position: 'fixed', width: '100vw', zIndex: '10' }}>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -73,8 +73,6 @@ function CustomLayout() {
             marginRight: 8,
             marginBottom: 12,
             minHeight: '99vh',
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
           }}
         >
           <Outlet />

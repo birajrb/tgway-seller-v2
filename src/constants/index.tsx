@@ -1,5 +1,6 @@
-import { MenuItem } from '@/types';
 import { Archive, CircleUser, Home, LogOut, ShoppingBag, Wallet } from 'lucide-react';
+
+import { MenuItem } from '@/types';
 
 export const sidebarItems: MenuItem[] = [
   {

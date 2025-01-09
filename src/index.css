@@ -1,18 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 
-body {
-  font-family: "Figtree", serif !important;
+html{
+  box-sizing: border-box;
 }
 
-:where(
-    .css-dev-only-do-not-override-7ny38l
-  ).ant-menu-light.ant-menu-root.ant-menu-inline,
-:where(.css-dev-only-do-not-override-7ny38l).ant-menu-light
-  > .ant-menu.ant-menu-root.ant-menu-inline,
-:where(
-    .css-dev-only-do-not-override-7ny38l
-  ).ant-menu-light.ant-menu-root.ant-menu-vertical,
-:where(.css-dev-only-do-not-override-7ny38l).ant-menu-light
-  > .ant-menu.ant-menu-root.ant-menu-vertical {
-  border-inline-end: 0px !important;
+body {
+  font-family: "Figtree", serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.css-dev-only-do-not-override-7ny38l).ant-menu-light.ant-menu-root.ant-menu-inline, :where(.css-dev-only-do-not-override-7ny38l).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-inline, :where(.css-dev-only-do-not-override-7ny38l).ant-menu-light.ant-menu-root.ant-menu-vertical, :where(.css-dev-only-do-not-override-7ny38l).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-vertical {
+    border-inline-end: 0px;
 }
