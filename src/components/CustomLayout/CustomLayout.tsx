@@ -32,6 +32,8 @@ function CustomLayout() {
         trigger={null}
         collapsible
         collapsed={collapsed}
+        width={240} // Adjusted width when expanded
+        collapsedWidth={80} // Adjusted width when collapsed
         style={{
           position: 'fixed', // Fix the Sider
           height: '100vh', // Full height
@@ -49,13 +51,11 @@ function CustomLayout() {
           theme="light"
           mode="inline"
           defaultSelectedKeys={['1']}
-          items={
-            sidebarItems
-          }
+          items={sidebarItems}
         />
       </Sider>
-      <Layout style={{ marginLeft: collapsed ? 60 : 180 }}>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
+      <Layout style={{ marginLeft: collapsed ? 80 : 240 }}>
+        <Header style={{ padding: 0, background: colorBgContainer, position: "fixed", width: "100vw", zIndex: "10" }}>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -69,9 +69,8 @@ function CustomLayout() {
         <Content
           style={{
             padding: 24,
-            marginTop: 12,
-            marginLeft: 24,
-            marginRight: 24,
+            marginTop: 72,
+            marginRight: 8,
             marginBottom: 12,
             minHeight: '99vh',
             background: colorBgContainer,
