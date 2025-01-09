@@ -19,7 +19,7 @@ function CustomLayout() {
 
   const [collapsed, setCollapsed] = useState(false);
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer },
   } = theme.useToken();
 
   const handleNavigation: MenuProps['onClick'] = (e) => {

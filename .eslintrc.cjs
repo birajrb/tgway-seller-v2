@@ -164,10 +164,7 @@ module.exports = {
             ],
           },
         ],
-        "linebreak-style": ["off"], // Ignores line ending issues
-        // Or make it platform-specific:
-        "linebreak-style": ["error", process.platform === "win32" ? "windows" : "unix"],
-        "import/prefer-default-export": "off",
+        "linebreak-style": "off"
       },
     },
   ],
