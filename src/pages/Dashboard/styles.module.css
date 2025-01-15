@@ -2,3 +2,12 @@
   margin-left: 24px;
 }
 
+.icon {
+  color: #398afc;
+}
+
+.text {
+  color: #398afc;
+  font-size: 20px;
+  font-weight: bolder;
+}

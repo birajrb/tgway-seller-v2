@@ -179,10 +179,12 @@ function Dashboard() {
             <Card>
               <Flex justify="center" gap="small" vertical>
                 <Flex justify="center">
-                  <Text underline>11</Text>
+                  <Text underline className={styles.text}>
+                    11
+                  </Text>
                 </Flex>
-                <Flex justify="center">
-                  <ProductOutlined />
+                <Flex justify="center" gap="small">
+                  <ProductOutlined className={styles.icon} />
                   <h2>Total Product</h2>
                 </Flex>
                 <Flex justify="center">
@@ -197,10 +199,12 @@ function Dashboard() {
             <Card>
               <Flex justify="center" gap="small" vertical>
                 <Flex justify="center">
-                  <Text underline>2</Text>
+                  <Text underline className={styles.text}>
+                    2
+                  </Text>
                 </Flex>
-                <Flex justify="center">
-                  <DropboxOutlined />
+                <Flex justify="center" gap="small">
+                  <DropboxOutlined className={styles.icon} />
                   <h2>Total Order Value</h2>
                 </Flex>
                 <Flex justify="center">
@@ -215,10 +219,12 @@ function Dashboard() {
             <Card>
               <Flex justify="center" gap="small" vertical>
                 <Flex justify="center">
-                  <Text underline>2</Text>
+                  <Text underline className={styles.text}>
+                    2
+                  </Text>
                 </Flex>
-                <Flex justify="center">
-                  <RollbackOutlined />
+                <Flex justify="center" gap="small">
+                  <RollbackOutlined className={styles.icon} />
                   <h2>Total Return</h2>
                 </Flex>
                 <Flex justify="center">
