@@ -3,7 +3,6 @@ import {
   DropboxOutlined,
   HomeOutlined,
   ProductOutlined,
-  RollbackOutlined,
 } from '@ant-design/icons';
 import { Button, Card, Checkbox, Col, Flex, Row, Typography } from 'antd';
 
@@ -15,48 +14,60 @@ function Dashboard() {
   return (
     <Row gutter={[16, 32]}>
       <Col span={24}>
-        <Flex justify="space-between">
-          <Flex gap="small" vertical>
-            <h1> Summoners Store</h1>
-            <Flex gap="small">
-              <Text disabled>Seller id: 51</Text>
-              <Text disabled>Seller URL: Not Configured</Text>
+        <Row gutter={[16, 16]}>
+          <Col sm={24} xl={24}>
+            <Flex justify="space-between" gap="middle" wrap>
+              <Flex gap="small" vertical>
+                <h1>Summoners Store</h1>
+                <Flex gap="small">
+                  <Text disabled>Seller id: 51</Text>
+                  <Text disabled>Seller URL: Not Configured</Text>
+                </Flex>
+              </Flex>
+              <Button
+                className={styles.button}
+                icon={<HomeOutlined className={styles.icons} />}
+                iconPosition="end"
+              >
+                <span className={styles.text}>Configure Store</span>
+              </Button>
             </Flex>
-          </Flex>
-          <Button type="primary" icon={<HomeOutlined />} iconPosition="end">
-            Configure Store
-          </Button>
-        </Flex>
+          </Col>
+        </Row>
       </Col>
       <Col span={24}>
         <Card>
           <Row gutter={[16, 32]}>
             <Col span={24}>
-              <Flex justify="space-between">
-                <Flex gap="" vertical>
-                  <h2>Bank Account</h2>
-                  <Text disabled> Your Payment Processing Details</Text>
-                </Flex>
-                <Button
-                  type="default"
-                  color="primary"
-                  variant="outlined"
-                  icon={<ArrowRightOutlined />}
-                  iconPosition="end"
-                >
-                  Modify
-                </Button>
-              </Flex>
-            </Col>
-            <Col span={24}>
               <Row gutter={[16, 16]}>
-                <Col span={12}>
+                <Col sm={8} md={24} xl={24}>
+                  <Flex justify="space-between" gap="small" wrap>
+                    <Flex vertical>
+                      <h2>Bank Account</h2>
+                      <Text disabled> Your Payment Processing Details</Text>
+                    </Flex>
+                    <Button
+                      type="default"
+                      className={styles.icon}
+                      variant="outlined"
+                      icon={<ArrowRightOutlined className={styles.icon} />}
+                      iconPosition="end"
+                    >
+                      Modify
+                    </Button>
+                  </Flex>
+                </Col>
+              </Row>
+            </Col>
+            <Col sm={8} md={16} xl={24}>
+              <Row gutter={[16, 16]}>
+                <Col sm={8} md={12}>
                   <Flex vertical>
                     <Text type="secondary">Bank Name</Text>
                     <h3>Not configured</h3>
                   </Flex>
                 </Col>
-                <Col span={12}>
+                <Col sm={8} md={12}>
                   <Flex vertical>
                     <Text type="secondary">Account Number</Text>
                     <h3>Not Configured</h3>
@@ -64,15 +75,15 @@ function Dashboard() {
                 </Col>
               </Row>
             </Col>
-            <Col span={24}>
+            <Col sm={8} md={16} xl={24}>
               <Row gutter={[16, 16]}>
-                <Col span={12}>
+                <Col sm={8} md={12} lg={12} xl={12}>
                   <Flex vertical>
                     <Text type="secondary">Account Name</Text>
                     <h3>Not configured</h3>
                   </Flex>
                 </Col>
-                <Col span={12}>
+                <Col sm={8} md={12} lg={12} xl={12}>
                   <Flex vertical>
                     <Text type="secondary">Branch Name</Text>
                     <h3>Not Configured</h3>
@@ -89,8 +100,8 @@ function Dashboard() {
         </Card>
       </Col>
       <Col span={24}>
-        <Row gutter={[16, 0]}>
-          <Col span={12}>
+        <Row gutter={[16, 16]}>
+          <Col sm={8} md={12} xl={12}>
             <Card>
               <Row gutter={[0, 32]}>
                 <Col span={24}>
@@ -128,7 +139,7 @@ function Dashboard() {
               </Row>
             </Card>
           </Col>
-          <Col span={12}>
+          <Col sm={8} md={12} xl={12}>
             <Card>
               <Row gutter={[0, 32]}>
                 <Col span={24}>
@@ -139,7 +150,8 @@ function Dashboard() {
                     </Flex>
                     <Button
                       type="link"
-                      icon={<ArrowRightOutlined />}
+                      className={styles.icon}
+                      icon={<ArrowRightOutlined className={styles.icon} />}
                       iconPosition="end"
                     >
                       More
@@ -174,64 +186,44 @@ function Dashboard() {
         </Row>
       </Col>
       <Col span={24}>
-        <Row gutter={[32, 0]}>
-          <Col span={8}>
+        <Row gutter={[32, 16]}>
+          <Col sm={32} md={8} xl={8}>
             <Card>
-              <Flex justify="center" gap="small" vertical>
-                <Flex justify="center">
-                  <Text underline className={styles.text}>
-                    11
-                  </Text>
-                </Flex>
-                <Flex justify="center" gap="small">
+              <Flex gap="small" vertical>
+                <Flex justify="space-between">
+                  <h3>Total Product</h3>
                   <ProductOutlined className={styles.icon} />
-                  <h2>Total Product</h2>
                 </Flex>
-                <Flex justify="center">
-                  <Text type="secondary">
-                    +2 new products added in the last 7 days.
-                  </Text>
-                </Flex>
+                <h1>2+</h1>
+                <Text type="secondary">New products added in last 7 days.</Text>
               </Flex>
             </Card>
           </Col>
-          <Col span={8}>
+          <Col sm={32} md={8} xl={8}>
             <Card>
-              <Flex justify="center" gap="small" vertical>
-                <Flex justify="center">
-                  <Text underline className={styles.text}>
-                    2
-                  </Text>
-                </Flex>
-                <Flex justify="center" gap="small">
+              <Flex gap="small" vertical>
+                <Flex justify="space-between">
+                  <h3>Total Order value</h3>
                   <DropboxOutlined className={styles.icon} />
-                  <h2>Total Order Value</h2>
                 </Flex>
-                <Flex justify="center">
-                  <Text type="secondary">
-                    Order value increased in the last 7 days.
-                  </Text>
-                </Flex>
+                <h1>RS 20,000</h1>
+                <Text type="secondary">
+                  Order value increased in the last 2 days.
+                </Text>
               </Flex>
             </Card>
           </Col>
-          <Col span={8}>
+          <Col sm={32} md={8} xl={8}>
             <Card>
-              <Flex justify="center" gap="small" vertical>
-                <Flex justify="center">
-                  <Text underline className={styles.text}>
-                    2
-                  </Text>
+              <Flex gap="small" vertical>
+                <Flex justify="space-between">
+                  <h3>Total Return</h3>
+                  <ProductOutlined className={styles.icon} />
                 </Flex>
-                <Flex justify="center" gap="small">
-                  <RollbackOutlined className={styles.icon} />
-                  <h2>Total Return</h2>
-                </Flex>
-                <Flex justify="center">
-                  <Text type="secondary">
-                    Return decreased in the last 7 days.
-                  </Text>
-                </Flex>
+                <h1>1</h1>
+                <Text type="secondary">
+                  Returns decreased in the last 2 days.
+                </Text>
               </Flex>
             </Card>
           </Col>

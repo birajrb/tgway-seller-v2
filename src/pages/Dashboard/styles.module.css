@@ -3,11 +3,19 @@
 }
 
 .icon {
-  color: #398afc;
+  color: #0199e6;
 }
 
-.text {
-  color: #398afc;
-  font-size: 20px;
-  font-weight: bolder;
+.button {
+  color: #0199e6;
+  background-color: #0199E6;
+  border-color: #0199E6;
+}
+
+.text{
+  color: white;
+}
+
+.icons{
+  color: white;
 }
