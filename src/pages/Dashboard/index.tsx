@@ -18,10 +18,14 @@ function Dashboard() {
           <Col sm={24} xl={24}>
             <Flex justify="space-between" gap="middle" wrap>
               <Flex gap="small" vertical>
-                <h1>Summoners Store</h1>
+                <h1 className={styles['responsive-title']}>Summoners Store</h1>
                 <Flex gap="small">
-                  <Text disabled>Seller id: 51</Text>
-                  <Text disabled>Seller URL: Not Configured</Text>
+                  <Text className={styles['responsive-text']} disabled>
+                    Seller id: 51
+                  </Text>
+                  <Text className={styles['responsive-text']} disabled>
+                    Seller URL: Not Configured
+                  </Text>
                 </Flex>
               </Flex>
               <Button
@@ -29,7 +33,7 @@ function Dashboard() {
                 icon={<HomeOutlined className={styles.icons} />}
                 iconPosition="end"
               >
-                <span className={styles.text}>Configure Store</span>
+                <span className={`${styles.text} ${styles['responsive-text']}`}>Configure Store</span>
               </Button>
             </Flex>
           </Col>
@@ -37,18 +41,18 @@ function Dashboard() {
       </Col>
       <Col span={24}>
         <Card>
-          <Row gutter={[16, 32]}>
+          <Row gutter={[16, 16]}>
             <Col span={24}>
               <Row gutter={[16, 16]}>
-                <Col sm={8} md={24} xl={24}>
+                <Col xs={24} sm={24} md={24} xl={24}>
                   <Flex justify="space-between" gap="small" wrap>
                     <Flex vertical>
-                      <h2>Bank Account</h2>
-                      <Text disabled> Your Payment Processing Details</Text>
+                      <h2 className={styles['responsive-subtitle']}>Bank Account</h2>
+                      <Text className={styles['responsive-text']} disabled> Your Payment Processing Details</Text>
                     </Flex>
                     <Button
                       type="default"
-                      className={styles.icon}
+                      className={`${styles.icon} ${styles['responsive-text']}`}
                       variant="outlined"
                       icon={<ArrowRightOutlined className={styles.icon} />}
                       iconPosition="end"
@@ -59,40 +63,40 @@ function Dashboard() {
                 </Col>
               </Row>
             </Col>
-            <Col sm={8} md={16} xl={24}>
+            <Col xs={24} sm={8} md={8} xl={24}>
               <Row gutter={[16, 16]}>
-                <Col sm={8} md={12}>
+                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                   <Flex vertical>
-                    <Text type="secondary">Bank Name</Text>
-                    <h3>Not configured</h3>
+                    <Text className={styles['responsive-text']} type="secondary">Bank Name</Text>
+                    <h3 className={styles['responsive-sub']}>Not configured</h3>
                   </Flex>
                 </Col>
-                <Col sm={8} md={12}>
+                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                   <Flex vertical>
-                    <Text type="secondary">Account Number</Text>
-                    <h3>Not Configured</h3>
+                    <Text className={styles['responsive-text']} type="secondary">Account Number</Text>
+                    <h3 className={styles['responsive-sub']}>Not Configured</h3>
                   </Flex>
                 </Col>
               </Row>
             </Col>
-            <Col sm={8} md={16} xl={24}>
+            <Col xs={24} sm={8} md={8} xl={24}>
               <Row gutter={[16, 16]}>
-                <Col sm={8} md={12} lg={12} xl={12}>
+                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                   <Flex vertical>
-                    <Text type="secondary">Account Name</Text>
-                    <h3>Not configured</h3>
+                    <Text className={styles['responsive-text']} type="secondary">Account Name</Text>
+                    <h3 className={styles['responsive-sub']}>Not configured</h3>
                   </Flex>
                 </Col>
-                <Col sm={8} md={12} lg={12} xl={12}>
+                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                   <Flex vertical>
-                    <Text type="secondary">Branch Name</Text>
-                    <h3>Not Configured</h3>
+                    <Text className={styles['responsive-text']} type="secondary">Branch Name</Text>
+                    <h3 className={styles['responsive-sub']}>Not Configured</h3>
                   </Flex>
                 </Col>
               </Row>
             </Col>
             <Col span={24}>
-              <Text type="secondary">
+              <Text className={styles['responsive-text']} type="secondary">
                 Update your bank details to ensure smooth Payment Processing.
               </Text>
             </Col>
@@ -101,13 +105,13 @@ function Dashboard() {
       </Col>
       <Col span={24}>
         <Row gutter={[16, 16]}>
-          <Col sm={8} md={12} xl={12}>
+          <Col xs={24} sm={24} md={12} xl={12}>
             <Card>
-              <Row gutter={[0, 32]}>
+              <Row gutter={[0, 16]}>
                 <Col span={24}>
                   <Flex vertical>
-                    <h1>Recent Notifications</h1>
-                    <Text type="secondary">
+                    <h1 className={styles['responsive-title']}>Recent Notifications</h1>
+                    <Text className={styles['responsive-text']} type="secondary">
                       You have 2 unread notifications
                     </Text>
                   </Flex>
@@ -117,9 +121,9 @@ function Dashboard() {
                     <Col span={24}>
                       <Flex vertical>
                         <Checkbox>
-                          <h4> New Order from Admin.</h4>
+                          <h4 className={styles['responsive-sub']}> New Order from Admin.</h4>
                         </Checkbox>
-                        <Text type="secondary" className={styles.date}>
+                        <Text type="secondary" className={`${styles.date} ${styles['responsive-text']}`}>
                           Oct, 17
                         </Text>
                       </Flex>
@@ -127,9 +131,9 @@ function Dashboard() {
                     <Col span={24}>
                       <Flex vertical>
                         <Checkbox>
-                          <h4> New Order from Admin.</h4>
+                          <h4 className={styles['responsive-sub']}> New Order from Admin.</h4>
                         </Checkbox>
-                        <Text type="secondary" className={styles.date}>
+                        <Text type="secondary" className={`${styles.date} ${styles['responsive-text']}`}>
                           Oct, 17
                         </Text>
                       </Flex>
@@ -139,18 +143,18 @@ function Dashboard() {
               </Row>
             </Card>
           </Col>
-          <Col sm={8} md={12} xl={12}>
+          <Col xs={24} sm={24} md={12} xl={12}>
             <Card>
-              <Row gutter={[0, 32]}>
+              <Row gutter={[0, 16]}>
                 <Col span={24}>
                   <Flex justify="space-between">
                     <Flex vertical>
-                      <h1>New order</h1>
-                      <Text type="secondary">2+ New order</Text>
+                      <h1 className={styles['responsive-title']}>New order</h1>
+                      <Text className={styles['responsive-text']} type="secondary">2+ New order</Text>
                     </Flex>
                     <Button
                       type="link"
-                      className={styles.icon}
+                      className={`${styles.icon} ${styles['responsive-sub']}`}
                       icon={<ArrowRightOutlined className={styles.icon} />}
                       iconPosition="end"
                     >
@@ -162,9 +166,9 @@ function Dashboard() {
                   <Col span={24}>
                     <Flex vertical>
                       <Checkbox>
-                        <h4> New Order from Admin.</h4>
+                        <h4 className={styles['responsive-sub']}> New Order from Admin.</h4>
                       </Checkbox>
-                      <Text type="secondary" className={styles.date}>
+                      <Text type="secondary" className={`${styles.date} ${styles['responsive-text']}`}>
                         Oct, 17
                       </Text>
                     </Flex>
@@ -172,9 +176,9 @@ function Dashboard() {
                   <Col span={24}>
                     <Flex vertical>
                       <Checkbox>
-                        <h4> New Order from Admin.</h4>
+                        <h4 className={styles['responsive-sub']}> New Order from Sita.</h4>
                       </Checkbox>
-                      <Text type="secondary" className={styles.date}>
+                      <Text type="secondary" className={`${styles.date} ${styles['responsive-text']}`}>
                         Oct, 17
                       </Text>
                     </Flex>
@@ -187,41 +191,41 @@ function Dashboard() {
       </Col>
       <Col span={24}>
         <Row gutter={[32, 16]}>
-          <Col sm={32} md={8} xl={8}>
+          <Col xs={24} sm={24} md={8} xl={8}>
             <Card>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
-                  <h3>Total Product</h3>
+                  <h3 className={styles['responsive-sub']}>Total Product</h3>
                   <ProductOutlined className={styles.icon} />
                 </Flex>
-                <h1>2+</h1>
-                <Text type="secondary">New products added in last 7 days.</Text>
+                <h1 className={styles['responsive-title']}>2+</h1>
+                <Text className={styles['responsive-text']} type="secondary">New products added in last 7 days.</Text>
               </Flex>
             </Card>
           </Col>
-          <Col sm={32} md={8} xl={8}>
+          <Col xs={24} sm={24} md={8} xl={8}>
             <Card>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
-                  <h3>Total Order value</h3>
+                  <h3 className={styles['responsive-sub']}>Total Order value</h3>
                   <DropboxOutlined className={styles.icon} />
                 </Flex>
-                <h1>RS 20,000</h1>
-                <Text type="secondary">
-                  Order value increased in the last 2 days.
+                <h1 className={styles['responsive-title']}>RS 20,000</h1>
+                <Text className={styles['responsive-text']} type="secondary">
+                  Order value increase in the last 2 days.
                 </Text>
               </Flex>
             </Card>
           </Col>
-          <Col sm={32} md={8} xl={8}>
+          <Col xs={24} sm={24} md={8} xl={8}>
             <Card>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
-                  <h3>Total Return</h3>
+                  <h3 className={styles['responsive-sub']}>Total Return</h3>
                   <ProductOutlined className={styles.icon} />
                 </Flex>
-                <h1>1</h1>
-                <Text type="secondary">
+                <h1 className={styles['responsive-title']}>1</h1>
+                <Text className={styles['responsive-text']} type="secondary">
                   Returns decreased in the last 2 days.
                 </Text>
               </Flex>
