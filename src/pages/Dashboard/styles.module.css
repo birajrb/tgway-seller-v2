@@ -8,67 +8,65 @@
 
 .button {
   color: #0199e6;
-  background-color: #0199E6;
-  border-color: #0199E6;
+  background-color: #0199e6;
+  border-color: #0199e6;
 }
 
-.text{
+.text {
   color: white;
 }
 
-.icons{
+.icons {
   color: white;
 }
 
-.responsive-title{
+.responsive-title {
   font-size: 16px;
 }
 
-.responsive-subtitle{
+.responsive-subtitle {
   font-size: 14px;
 }
 
-.responsive-sub{
+.responsive-sub {
   font-size: 12px;
 }
-.responsive-text{
+.responsive-text {
   font-size: 10px;
 }
 
-@media (min-width: 768px){
-  .responsive-title{
-    font-size: 24px ;
-  }
-
-  .responsive-subtitle{
-    font-size: 20px;
-  }
-
-  .responsive-sub{
-    font-size: 16px;
-  }
-
-  .responsive-text{
-  font-size: 14px;
-}
-}
-
-@media (min-width: 1200px){
-  .responsive-title{
-    font-size: 28px ;
-  }
-
-  .responsive-subtitle{
+@media (min-width: 768px) {
+  .responsive-title {
     font-size: 24px;
   }
 
-  .responsive-sub{
+  .responsive-subtitle {
     font-size: 20px;
   }
 
-  .responsive-text{
-  font-size: 16px;
-}
+  .responsive-sub {
+    font-size: 16px;
+  }
+
+  .responsive-text {
+    font-size: 14px;
+  }
 }
 
+@media (min-width: 1200px) {
+  .responsive-title {
+    font-size: 28px;
+  }
 
+  .responsive-subtitle {
+    font-size: 24px;
+  }
+
+  .responsive-sub {
+    font-size: 20px;
+  }
+
+  .responsive-text {
+    font-size: 16px;
+  }
+}

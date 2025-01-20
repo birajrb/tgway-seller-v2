@@ -6,11 +6,17 @@ import {
 } from '@ant-design/icons';
 import { Button, Card, Checkbox, Col, Flex, Row, Typography } from 'antd';
 
+import { getBankDetail } from '@/api/vendor';
+import { useQuery } from '@tanstack/react-query';
 import styles from './styles.module.css';
 
 const { Text } = Typography;
 
 function Dashboard() {
+  const { data: bankDetail } = useQuery({
+    queryKey: ['bank-detail'],
+    queryFn: () => getBankDetail(),
+  });
   return (
     <Row gutter={[16, 32]}>
       <Col span={24}>
@@ -47,8 +53,10 @@ function Dashboard() {
                 <Col xs={24} sm={24} md={24} xl={24}>
                   <Flex justify="space-between" gap="small" wrap>
                     <Flex vertical>
-                      <h2 className={styles['responsive-subtitle']}>Bank Account</h2>
-                      <Text className={styles['responsive-text']} disabled> Your Payment Processing Details</Text>
+                      <h2 className={styles['responsive-subtitle']}>Bank Account:</h2>
+                      <Text className={styles['responsive-text']} disabled>
+                        Your payment processing details.
+                      </Text>
                     </Flex>
                     <Button
                       type="default"
@@ -65,32 +73,40 @@ function Dashboard() {
             </Col>
             <Col xs={24} sm={8} md={8} xl={24}>
               <Row gutter={[16, 16]}>
-                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                   <Flex vertical>
-                    <Text className={styles['responsive-text']} type="secondary">Bank Name</Text>
-                    <h3 className={styles['responsive-sub']}>Not configured</h3>
+                    <Text className={styles['responsive-text']} type="secondary">Bank Name:</Text>
+                    <h3 className={styles['responsive-sub']}>
+                      {bankDetail?.data?.bank_name ?? 'N/A'}
+                    </h3>
                   </Flex>
                 </Col>
-                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                   <Flex vertical>
-                    <Text className={styles['responsive-text']} type="secondary">Account Number</Text>
-                    <h3 className={styles['responsive-sub']}>Not Configured</h3>
+                    <Text className={styles['responsive-text']} type="secondary">Account Number:</Text>
+                    <h3 className={styles['responsive-sub']}>
+                      {bankDetail?.data?.account_number ?? 'N/A'}
+                    </h3>
                   </Flex>
                 </Col>
               </Row>
             </Col>
             <Col xs={24} sm={8} md={8} xl={24}>
               <Row gutter={[16, 16]}>
-                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                   <Flex vertical>
-                    <Text className={styles['responsive-text']} type="secondary">Account Name</Text>
-                    <h3 className={styles['responsive-sub']}>Not configured</h3>
+                    <Text className={styles['responsive-text']} type="secondary">Account Name:</Text>
+                    <h3 className={styles['responsive-sub']}>
+                      {bankDetail?.data?.account_name ?? 'N/A'}
+                    </h3>
                   </Flex>
                 </Col>
-                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                   <Flex vertical>
-                    <Text className={styles['responsive-text']} type="secondary">Branch Name</Text>
-                    <h3 className={styles['responsive-sub']}>Not Configured</h3>
+                    <Text className={styles['responsive-text']} type="secondary">Branch Name:</Text>
+                    <h3 className={styles['responsive-sub']}>
+                      {bankDetail?.data?.bank_branch ?? 'N/A'}
+                    </h3>
                   </Flex>
                 </Col>
               </Row>
@@ -150,7 +166,7 @@ function Dashboard() {
                   <Flex justify="space-between">
                     <Flex vertical>
                       <h1 className={styles['responsive-title']}>New order</h1>
-                      <Text className={styles['responsive-text']} type="secondary">2+ New order</Text>
+                      <Text className={styles['responsive-text']} type="secondary">New order</Text>
                     </Flex>
                     <Button
                       type="link"
@@ -166,7 +182,9 @@ function Dashboard() {
                   <Col span={24}>
                     <Flex vertical>
                       <Checkbox>
-                        <h4 className={styles['responsive-sub']}> New Order from Admin.</h4>
+                        <h4 className={styles['responsive-sub']}>
+                          New Order from Sita.
+                        </h4>
                       </Checkbox>
                       <Text type="secondary" className={`${styles.date} ${styles['responsive-text']}`}>
                         Oct, 17
@@ -198,7 +216,9 @@ function Dashboard() {
                   <h3 className={styles['responsive-sub']}>Total Product</h3>
                   <ProductOutlined className={styles.icon} />
                 </Flex>
-                <h1 className={styles['responsive-title']}>2+</h1>
+                <h1 className={styles['responsive-title']}>
+                  2+
+                </h1>
                 <Text className={styles['responsive-text']} type="secondary">New products added in last 7 days.</Text>
               </Flex>
             </Card>
