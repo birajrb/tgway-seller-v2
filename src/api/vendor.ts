@@ -8,5 +8,11 @@ const getBankDetail = async () => {
   });
   return response;
 };
-
-export { getBankDetail };
+const getDashboardOrders = async () => {
+  const response = await baseRequest({
+    url: '/seller/dashboard/orderitems',
+    method: 'GET',
+  });
+  return response;
+};
+export { getBankDetail, getDashboardOrders };

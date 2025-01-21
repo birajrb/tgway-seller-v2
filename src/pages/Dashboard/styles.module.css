@@ -20,6 +20,9 @@
   color: white;
 }
 
+.height {
+  height: 300px;
+}
 .responsive-title {
   font-size: 16px;
 }
