@@ -9,6 +9,7 @@ import { Button, Card, Checkbox, Col, Flex, Row, Typography } from 'antd';
 import { getBankDetail, getDashboardOrders } from '@/api/vendor';
 import { useQuery } from '@tanstack/react-query';
 import styles from './styles.module.css';
+import { Link } from 'react-router-dom';
 
 const { Text } = Typography;
 
@@ -151,7 +152,7 @@ function Dashboard() {
       <Col span={24}>
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={24} md={12} xl={12}>
-            <Card className={styles.height}>
+            <Card className={`${styles.height} ${styles.scrollY} ${styles.scrollArea}`}>
               <Row gutter={[0, 16]}>
                 <Col span={24}>
                   <Flex vertical>
@@ -205,7 +206,9 @@ function Dashboard() {
             </Card>
           </Col>
           <Col xs={24} sm={24} md={12} xl={12}>
-            <Card className={styles.height}>
+            <Card
+              className={`${styles.height} ${styles.scrollY} ${styles.scrollArea}`}
+            >
               <Row gutter={[0, 16]}>
                 <Col span={24}>
                   <Flex justify="space-between">
@@ -218,14 +221,16 @@ function Dashboard() {
                         New order
                       </Text>
                     </Flex>
-                    <Button
-                      type="link"
-                      className={`${styles.icon} ${styles["responsive-sub"]}`}
-                      icon={<ArrowRightOutlined className={styles.icon} />}
-                      iconPosition="end"
-                    >
-                      More
-                    </Button>
+                    <Link to="/order">
+                      <Button
+                        type="link"
+                        className={`${styles.icon} ${styles['responsive-sub']}`}
+                        icon={<ArrowRightOutlined className={styles.icon} />}
+                        iconPosition="end"
+                      >
+                        More
+                      </Button>
+                    </Link>
                   </Flex>
                 </Col>
                 {order?.map((data: orderItemsProps, id: number) => (
@@ -233,12 +238,14 @@ function Dashboard() {
                     <Card>
                       <Flex justify="space-between">
                         <Flex>
-                          <h3 className={styles['responsive-sub']}>
+                          <h3 className={styles["responsive-sub"]}>
                             {data?.product_name}
                           </h3>
                         </Flex>
                         <Flex>
-                          <h3 className={styles['responsive-sub']}>{data?.quantity}</h3>
+                          <h3 className={styles["responsive-sub"]}>
+                            {data?.quantity}
+                          </h3>
                         </Flex>
                       </Flex>
                     </Card>
