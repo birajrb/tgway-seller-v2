@@ -24,6 +24,9 @@
   height: 300px;
 }
 
+.border {
+  border: 1px solid #ddd;
+}
 .scrollY {
   overflow-y: auto;
   border: 1px solid #ddd;

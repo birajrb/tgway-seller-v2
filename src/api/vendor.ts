@@ -15,4 +15,13 @@ const getDashboardOrders = async () => {
   });
   return response;
 };
-export { getBankDetail, getDashboardOrders };
+
+const getDashboardContent = async () => {
+  const response = await baseRequest({
+    url: '/seller/dashboard',
+    method: 'GET',
+  });
+  return response;
+};
+
+export { getBankDetail, getDashboardOrders, getDashboardContent };

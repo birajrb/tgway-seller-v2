@@ -6,10 +6,15 @@ import {
 } from '@ant-design/icons';
 import { Button, Card, Checkbox, Col, Flex, Row, Typography } from 'antd';
 
-import { getBankDetail, getDashboardOrders } from '@/api/vendor';
+import {
+  getBankDetail,
+  getDashboardContent,
+  getDashboardOrders,
+} from '@/api/vendor';
 import { useQuery } from '@tanstack/react-query';
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
+import { PieChartData } from './Pie';
 
 const { Text } = Typography;
 
@@ -22,7 +27,11 @@ function Dashboard() {
     queryKey: ['orders'],
     queryFn: () => getDashboardOrders(),
   });
-  console.log(order);
+  const { data } = useQuery({
+    queryKey: ['dashboard'],
+    queryFn: () => getDashboardContent(),
+  });
+
   return (
     <Row gutter={[16, 32]}>
       <Col span={24}>
@@ -54,7 +63,7 @@ function Dashboard() {
         </Row>
       </Col>
       <Col span={24}>
-        <Card>
+        <Card className={styles.border}>
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Row gutter={[16, 16]}>
@@ -152,7 +161,9 @@ function Dashboard() {
       <Col span={24}>
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={24} md={12} xl={12}>
-            <Card className={`${styles.height} ${styles.scrollY} ${styles.scrollArea}`}>
+            <Card
+              className={`${styles.height} ${styles.scrollY} ${styles.scrollArea}`}
+            >
               <Row gutter={[0, 16]}>
                 <Col span={24}>
                   <Flex vertical>
@@ -224,7 +235,7 @@ function Dashboard() {
                     <Link to="/order">
                       <Button
                         type="link"
-                        className={`${styles.icon} ${styles['responsive-sub']}`}
+                        className={`${styles.icon} ${styles["responsive-sub"]}`}
                         icon={<ArrowRightOutlined className={styles.icon} />}
                         iconPosition="end"
                       >
@@ -259,13 +270,15 @@ function Dashboard() {
       <Col span={24}>
         <Row gutter={[32, 16]}>
           <Col xs={24} sm={24} md={8} xl={8}>
-            <Card>
+            <Card className={styles.border}>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
                   <h3 className={styles["responsive-sub"]}>Total Product</h3>
                   <ProductOutlined className={styles.icon} />
                 </Flex>
-                <h1 className={styles["responsive-title"]}>2+</h1>
+                <h1 className={styles["responsive-title"]}>
+                  {data?.total_products}
+                </h1>
                 <Text className={styles["responsive-text"]} type="secondary">
                   New products added in last 7 days.
                 </Text>
@@ -273,7 +286,7 @@ function Dashboard() {
             </Card>
           </Col>
           <Col xs={24} sm={24} md={8} xl={8}>
-            <Card>
+            <Card className={styles.border}>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
                   <h3 className={styles["responsive-sub"]}>
@@ -281,7 +294,10 @@ function Dashboard() {
                   </h3>
                   <DropboxOutlined className={styles.icon} />
                 </Flex>
-                <h1 className={styles["responsive-title"]}>RS 20,000</h1>
+                <h1 className={styles["responsive-title"]}>
+                  <span>$ </span>
+                  {data?.total_earnings}
+                </h1>
                 <Text className={styles["responsive-text"]} type="secondary">
                   Order value increase in the last 2 days.
                 </Text>
@@ -289,18 +305,35 @@ function Dashboard() {
             </Card>
           </Col>
           <Col xs={24} sm={24} md={8} xl={8}>
-            <Card>
+            <Card className={styles.border}>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
                   <h3 className={styles["responsive-sub"]}>Total Return</h3>
                   <ProductOutlined className={styles.icon} />
                 </Flex>
-                <h1 className={styles["responsive-title"]}>1</h1>
+                <h1 className={styles["responsive-title"]}>
+                  {data?.total_return}
+                </h1>
                 <Text className={styles["responsive-text"]} type="secondary">
                   Returns decreased in the last 2 days.
                 </Text>
               </Flex>
             </Card>
+          </Col>
+        </Row>
+      </Col>
+      <Col span={24}>
+        <Row gutter={[32, 16]}>
+          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+            <Card>
+              <h1 className={styles['responsive-title']}>
+                Order Payment Status
+              </h1>
+              <PieChartData />
+            </Card>
+          </Col>
+          <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+            <Card>hi</Card>
           </Col>
         </Row>
       </Col>
