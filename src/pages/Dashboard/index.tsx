@@ -364,7 +364,7 @@ function Dashboard() {
                   >
                     <circle cx="10.5" cy="10.5" r="10" fill="#0199E6" />
                   </svg>
-                  <h4 className={styles['responsive-text']}>Paid</h4>
+                  <h4 className={styles['responsive-text']}>Unpaid</h4>
                 </Flex>
                 <Flex justify="center" gap="small">
                   <svg
@@ -376,7 +376,7 @@ function Dashboard() {
                   >
                     <circle cx="10.5" cy="10.5" r="10" fill="#FACD16" />
                   </svg>
-                  <h4 className={styles['responsive-text']}>Pending</h4>
+                  <h4 className={styles['responsive-text']}>Paid</h4>
                 </Flex>
               </Flex>
             </Card>
