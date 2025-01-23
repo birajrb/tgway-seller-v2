@@ -1,6 +1,6 @@
-import { PieChart, Pie, ResponsiveContainer } from 'recharts';
+import { Pie, PieChart, ResponsiveContainer } from 'recharts';
 
-const data02 = [
+const data = [
   { name: 'Pending', value: 100 },
   { name: 'Paid', value: 300 },
 ];
@@ -11,12 +11,12 @@ export function PieChartData() {
     <ResponsiveContainer width="100%" height={300}>
       <PieChart>
         <Pie
-          data={data02}
+          data={data}
           dataKey="value"
           cx="50%"
           cy="50%"
           innerRadius={70}
-          outerRadius={90}
+          outerRadius={110}
           fill="#0199e4"
           label
         />

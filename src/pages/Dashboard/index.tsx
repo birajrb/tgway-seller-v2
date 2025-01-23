@@ -1,5 +1,6 @@
 import {
   ArrowRightOutlined,
+  DollarOutlined,
   DropboxOutlined,
   HomeOutlined,
   ProductOutlined,
@@ -15,6 +16,7 @@ import { useQuery } from '@tanstack/react-query';
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 import { PieChartData } from './Pie';
+import { BarChartData } from './Bar';
 
 const { Text } = Typography;
 
@@ -28,6 +30,10 @@ function Dashboard() {
     queryFn: () => getDashboardOrders(),
   });
   const { data } = useQuery({
+    queryKey: ['dashboard'],
+    queryFn: () => getDashboardContent(),
+  });
+  const { data: dataRelease } = useQuery({
     queryKey: ['dashboard'],
     queryFn: () => getDashboardContent(),
   });
@@ -59,6 +65,78 @@ function Dashboard() {
                 </span>
               </Button>
             </Flex>
+          </Col>
+        </Row>
+      </Col>
+      <Col span={24}>
+        <Row gutter={[32, 16]}>
+          <Col xs={24} sm={24} md={6} xl={6}>
+            <Card className={styles.border}>
+              <Flex gap="small" vertical>
+                <Flex justify="space-between">
+                  <h3 className={styles['responsive-sub']}>Total Product</h3>
+                  <ProductOutlined className={styles.icon} />
+                </Flex>
+                <h1 className={styles['responsive-title']}>
+                  {data?.total_products}
+                </h1>
+                <Text className={styles['responsive-text']} type="secondary">
+                  New products added in last 7 days.
+                </Text>
+              </Flex>
+            </Card>
+          </Col>
+          <Col xs={24} sm={24} md={6} xl={6}>
+            <Card className={styles.border}>
+              <Flex gap="small" vertical>
+                <Flex justify="space-between">
+                  <h3 className={styles['responsive-sub']}>
+                    Total Order value
+                  </h3>
+                  <DropboxOutlined className={styles.icon} />
+                </Flex>
+                <h1 className={styles['responsive-title']}>
+                  <span>$ </span>
+                  {data?.total_earnings}
+                </h1>
+                <Text className={styles['responsive-text']} type="secondary">
+                  Order value increase in the last 2 days.
+                </Text>
+              </Flex>
+            </Card>
+          </Col>
+          <Col xs={24} sm={24} md={6} xl={6}>
+            <Card className={styles.border}>
+              <Flex gap="small" vertical>
+                <Flex justify="space-between">
+                  <h3 className={styles['responsive-sub']}>Total Return</h3>
+                  <ProductOutlined className={styles.icon} />
+                </Flex>
+                <h1 className={styles['responsive-title']}>
+                  {data?.total_return}
+                </h1>
+                <Text className={styles['responsive-text']} type="secondary">
+                  Returns decreased in the last 2 days.
+                </Text>
+              </Flex>
+            </Card>
+          </Col>
+          <Col xs={24} sm={24} md={6} xl={6}>
+            <Card className={styles.border}>
+              <Flex gap="small" vertical>
+                <Flex justify="space-between">
+                  <h3 className={styles['responsive-sub']}>Total Commission</h3>
+                  <DollarOutlined className={styles.icon} />
+                </Flex>
+                <h1 className={styles['responsive-title']}>
+                  <span> $</span>
+                  {dataRelease?.total_commission}
+                </h1>
+                <Text className={styles['responsive-text']} type="secondary">
+                  Total Commission.
+                </Text>
+              </Flex>
+            </Card>
           </Col>
         </Row>
       </Col>
@@ -269,105 +347,55 @@ function Dashboard() {
       </Col>
       <Col span={24}>
         <Row gutter={[32, 16]}>
-          <Col xs={24} sm={24} md={8} xl={8}>
-            <Card className={styles.border}>
-              <Flex gap="small" vertical>
-                <Flex justify="space-between">
-                  <h3 className={styles['responsive-sub']}>Total Product</h3>
-                  <ProductOutlined className={styles.icon} />
-                </Flex>
-                <h1 className={styles['responsive-title']}>
-                  {data?.total_products}
-                </h1>
-                <Text className={styles['responsive-text']} type="secondary">
-                  New products added in last 7 days.
-                </Text>
-              </Flex>
-            </Card>
-          </Col>
-          <Col xs={24} sm={24} md={8} xl={8}>
-            <Card className={styles.border}>
-              <Flex gap="small" vertical>
-                <Flex justify="space-between">
-                  <h3 className={styles['responsive-sub']}>
-                    Total Order value
-                  </h3>
-                  <DropboxOutlined className={styles.icon} />
-                </Flex>
-                <h1 className={styles['responsive-title']}>
-                  <span>$ </span>
-                  {data?.total_earnings}
-                </h1>
-                <Text className={styles['responsive-text']} type="secondary">
-                  Order value increase in the last 2 days.
-                </Text>
-              </Flex>
-            </Card>
-          </Col>
-          <Col xs={24} sm={24} md={8} xl={8}>
-            <Card className={styles.border}>
-              <Flex gap="small" vertical>
-                <Flex justify="space-between">
-                  <h3 className={styles['responsive-sub']}>Total Return</h3>
-                  <ProductOutlined className={styles.icon} />
-                </Flex>
-                <h1 className={styles['responsive-title']}>
-                  {data?.total_return}
-                </h1>
-                <Text className={styles['responsive-text']} type="secondary">
-                  Returns decreased in the last 2 days.
-                </Text>
-              </Flex>
-            </Card>
-          </Col>
-        </Row>
-      </Col>
-      <Col span={24}>
-        <Row gutter={[32, 16]}>
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-            <Card>
+            <Card className={styles.chartCard}>
               <h3 className={styles['responsive-subtitle']}>
                 Order Payment Status
               </h3>
               <PieChartData />
-              <Row gutter={[16, 0]}>
-                <Col span={12}>
+              <Flex justify="space-between">
+                <Flex justify="center" gap="small">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
+                    width="21"
+                    height="21"
+                    viewBox="0 0 21 21"
                     fill="none"
-                    stroke="#f9cc16"
-                    strokewidth="3.6"
-                    strokelinecap="round"
-                    strokelinejoin="round"
                   >
-                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="10.5" cy="10.5" r="10" fill="#0199E6" />
                   </svg>
-                  <Text> Pending </Text>
-                </Col>
-                <Col span={12}>
+                  <h4 className={styles['responsive-text']}>Paid</h4>
+                </Flex>
+                <Flex justify="center" gap="small">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
+                    width="21"
+                    height="21"
+                    viewBox="0 0 21 21"
                     fill="none"
-                    stroke="#f9cc16"
-                    strokewidth="3.6"
-                    strokelinecap="round"
-                    strokelinejoin="round"
                   >
-                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="10.5" cy="10.5" r="10" fill="#FACD16" />
                   </svg>
-                  <Text> Paid </Text>
-                </Col>
-              </Row>
+                  <h4 className={styles['responsive-text']}>Pending</h4>
+                </Flex>
+              </Flex>
             </Card>
           </Col>
           <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-            <Card>hi</Card>
+            <Card className={styles.chartCard}>
+              <Flex gap="large" vertical>
+                <Flex vertical>
+                  <Row gutter={[32, 32]}>
+                    <Col span={12}>
+                      <h3 className={styles['responsive-subtitle']}>
+                        Orders Diagram
+                      </h3>
+                    </Col>
+                  </Row>
+                </Flex>
+                <BarChartData />
+              </Flex>
+            </Card>
           </Col>
         </Row>
       </Col>
