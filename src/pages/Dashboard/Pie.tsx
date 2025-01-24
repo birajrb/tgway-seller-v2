@@ -1,7 +1,10 @@
-import { getDashboardContent } from '@/api/vendor';
-import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
+
+import { getDashboardContent } from '@/api/vendor';
+
+import styles from './styles.module.css';
 
 // eslint-disable-next-line import/prefer-default-export
 export function PieChartData() {
@@ -16,7 +19,7 @@ export function PieChartData() {
     })),
     [data?.order_status_counts],
   );
-  const COLORS = ['#0199E6', '#FACD16'];
+  const COLORS = ['#FACD16', '#0199E6'];
   return (
     <ResponsiveContainer width="100%" height={300}>
       <PieChart>
@@ -25,12 +28,12 @@ export function PieChartData() {
           dataKey="value"
           cx="50%"
           cy="50%"
-          innerRadius={70}
-          outerRadius={110}
+          innerRadius="50%"
+          outerRadius="80%"
           fill="#8884d8"
           label
         >
-          {chartData.map((entry: any, index: number) => (
+          {chartData?.map((entry: any, index: number) => (
             <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>

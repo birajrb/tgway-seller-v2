@@ -1,62 +1,204 @@
+import React from 'react';
 import {
-  Bar,
   BarChart,
-  CartesianGrid,
-  Legend,
+  Bar,
   Rectangle,
-  ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
 } from 'recharts';
-
-import styles from './styles.module.css';
 
 const data = [
   {
     name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    orders: 2400,
   },
   {
     name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
+  },
+  {
+    name: 'Page A',
+    orders: 2400,
+  },
+  {
+    name: 'Page B',
+    orders: 1398,
   },
 ];
 
-// eslint-disable-next-line import/prefer-default-export
-export function BarChartData() {
+export default function BarChartData() {
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart
-        className={styles['responsive-chart']}
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar
-          dataKey="pv"
-          fill="#8884d8"
-          activeBar={<Rectangle fill="pink" stroke="blue" />}
-        />
-        <Bar
-          dataKey="uv"
-          fill="#82ca9d"
-          activeBar={<Rectangle fill="gold" stroke="purple" />}
-        />
-      </BarChart>
-    </ResponsiveContainer>
+    <div style={{ width: '100%', height: '300px' }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar
+            dataKey="orders"
+            fill="#8884d8"
+            activeBar={<Rectangle fill="pink" stroke="blue" />}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

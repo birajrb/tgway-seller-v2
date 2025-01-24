@@ -16,7 +16,7 @@ import { useQuery } from '@tanstack/react-query';
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 import { PieChartData } from './Pie';
-import { BarChartData } from './Bar';
+import BarChartData from './Bar';
 
 const { Text } = Typography;
 
@@ -70,8 +70,8 @@ function Dashboard() {
       </Col>
       <Col span={24}>
         <Row gutter={[32, 16]}>
-          <Col xs={24} sm={24} md={6} xl={6}>
-            <Card className={styles.border}>
+          <Col xs={24} sm={12} md={12} xl={6}>
+            <Card className={`${styles.border} ${styles['responsive-card']}`}>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
                   <h3 className={styles['responsive-sub']}>Total Product</h3>
@@ -81,13 +81,13 @@ function Dashboard() {
                   {data?.total_products}
                 </h1>
                 <Text className={styles['responsive-text']} type="secondary">
-                  New products added in last 7 days.
+                  New arrivals recently added.
                 </Text>
               </Flex>
             </Card>
           </Col>
-          <Col xs={24} sm={24} md={6} xl={6}>
-            <Card className={styles.border}>
+          <Col xs={24} sm={12} md={12} xl={6}>
+            <Card className={`${styles.border} ${styles['responsive-card']}`}>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
                   <h3 className={styles['responsive-sub']}>
@@ -100,13 +100,13 @@ function Dashboard() {
                   {data?.total_earnings}
                 </h1>
                 <Text className={styles['responsive-text']} type="secondary">
-                  Order value increase in the last 2 days.
+                  Recent growth observed.
                 </Text>
               </Flex>
             </Card>
           </Col>
-          <Col xs={24} sm={24} md={6} xl={6}>
-            <Card className={styles.border}>
+          <Col xs={24} sm={12} md={12} xl={6}>
+            <Card className={`${styles.border} ${styles['responsive-card']}`}>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
                   <h3 className={styles['responsive-sub']}>Total Return</h3>
@@ -116,13 +116,13 @@ function Dashboard() {
                   {data?.total_return}
                 </h1>
                 <Text className={styles['responsive-text']} type="secondary">
-                  Returns decreased in the last 2 days.
+                  -2% from last months.
                 </Text>
               </Flex>
             </Card>
           </Col>
-          <Col xs={24} sm={24} md={6} xl={6}>
-            <Card className={styles.border}>
+          <Col xs={24} sm={12} md={12} xl={6}>
+            <Card className={`${styles.border} ${styles['responsive-card']}`}>
               <Flex gap="small" vertical>
                 <Flex justify="space-between">
                   <h3 className={styles['responsive-sub']}>Total Commission</h3>
@@ -133,7 +133,7 @@ function Dashboard() {
                   {dataRelease?.total_commission}
                 </h1>
                 <Text className={styles['responsive-text']} type="secondary">
-                  Total Commission.
+                  Total Commission paid.
                 </Text>
               </Flex>
             </Card>
@@ -348,7 +348,7 @@ function Dashboard() {
       <Col span={24}>
         <Row gutter={[32, 16]}>
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-            <Card className={styles.chartCard}>
+            <Card className={`${styles.chartCard} ${styles.border}`}>
               <h3 className={styles['responsive-subtitle']}>
                 Order Payment Status
               </h3>
@@ -364,7 +364,7 @@ function Dashboard() {
                   >
                     <circle cx="10.5" cy="10.5" r="10" fill="#0199E6" />
                   </svg>
-                  <h4 className={styles['responsive-text']}>Unpaid</h4>
+                  <h4 className={styles['responsive-text']}>Paid</h4>
                 </Flex>
                 <Flex justify="center" gap="small">
                   <svg
@@ -376,13 +376,13 @@ function Dashboard() {
                   >
                     <circle cx="10.5" cy="10.5" r="10" fill="#FACD16" />
                   </svg>
-                  <h4 className={styles['responsive-text']}>Paid</h4>
+                  <h4 className={styles['responsive-text']}>Pending</h4>
                 </Flex>
               </Flex>
             </Card>
           </Col>
           <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-            <Card className={styles.chartCard}>
+            <Card className={`${styles.chartCard} ${styles.border}`}>
               <Flex gap="large" vertical>
                 <Flex vertical>
                   <Row gutter={[32, 32]}>
@@ -398,6 +398,29 @@ function Dashboard() {
             </Card>
           </Col>
         </Row>
+      </Col>
+      <Col span={24}>
+        <Card>
+          <Row gutter={[0, 16]}>
+            <Col span={24}>
+              <Flex justify="space-between">
+                <h3 className={styles['responsive-subtitle']}>
+                  Newly Added Products
+                </h3>
+                <Link to="/products">
+                  <Button
+                    type="link"
+                    className={`${styles.icon} ${styles['responsive-sub']}`}
+                    icon={<ArrowRightOutlined className={styles.icon} />}
+                    iconPosition="end"
+                  >
+                    View All
+                  </Button>
+                </Link>
+              </Flex>
+            </Col>
+          </Row>
+        </Card>
       </Col>
     </Row>
   );

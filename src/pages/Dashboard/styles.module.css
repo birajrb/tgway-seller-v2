@@ -25,6 +25,24 @@
   height: 300px;
 }
 
+.dashboardCard {
+  height: 125px;
+}
+
+@media (min-width: 768px) {
+  .responsive-Card {
+    height: 160px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .responsive-Card {
+    height: 160px;
+  }
+}
+
+
+ 
 .chartCard {
   height: 400px;
 }
