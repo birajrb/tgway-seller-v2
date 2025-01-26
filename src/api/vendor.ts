@@ -24,4 +24,12 @@ const getDashboardContent = async () => {
   return response;
 };
 
-export { getBankDetail, getDashboardOrders, getDashboardContent };
+const getDashboardLatestProducts = async () => {
+  const response = await baseRequest({
+    url: '/seller/dashboard/latestProducts',
+    method: 'GET',
+  });
+  return response;
+};
+
+export { getBankDetail, getDashboardContent, getDashboardLatestProducts, getDashboardOrders };

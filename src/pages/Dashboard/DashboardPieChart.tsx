@@ -1,17 +1,8 @@
 import { useMemo } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
-import { getDashboardContent } from '@/api/vendor';
-
-import styles from './styles.module.css';
-
 // eslint-disable-next-line import/prefer-default-export
-export function PieChartData() {
-  const { data } = useQuery({
-    queryKey: ['piechart'],
-    queryFn: () => getDashboardContent(),
-  });
+export function PieChartData({ data }: any) {
   const chartData = useMemo(
     () => data?.order_status_counts?.map((item: any) => ({
       name: item.type.charAt(0).toUpperCase() + item.type.slice(1),

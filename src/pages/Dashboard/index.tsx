@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   ArrowRightOutlined,
   DollarOutlined,
@@ -5,18 +6,21 @@ import {
   HomeOutlined,
   ProductOutlined,
 } from '@ant-design/icons';
+import { useQuery } from '@tanstack/react-query';
 import { Button, Card, Checkbox, Col, Flex, Row, Typography } from 'antd';
 
 import {
   getBankDetail,
   getDashboardContent,
+  getDashboardLatestProducts,
   getDashboardOrders,
 } from '@/api/vendor';
-import { useQuery } from '@tanstack/react-query';
+
+import BarChartData from './DashboardBar';
+import { PieChartData } from './DashboardPieChart';
+import ProductTable from './DashboardTable';
+
 import styles from './styles.module.css';
-import { Link } from 'react-router-dom';
-import { PieChartData } from './Pie';
-import BarChartData from './Bar';
 
 const { Text } = Typography;
 
@@ -33,11 +37,10 @@ function Dashboard() {
     queryKey: ['dashboard'],
     queryFn: () => getDashboardContent(),
   });
-  const { data: dataRelease } = useQuery({
-    queryKey: ['dashboard'],
-    queryFn: () => getDashboardContent(),
+  const { data: latestProducts } = useQuery({
+    queryKey: ['latest-products'],
+    queryFn: () => getDashboardLatestProducts(),
   });
-
   return (
     <Row gutter={[16, 32]}>
       <Col span={24}>
@@ -130,7 +133,7 @@ function Dashboard() {
                 </Flex>
                 <h1 className={styles['responsive-title']}>
                   <span> $</span>
-                  {dataRelease?.total_commission}
+                  {data?.total_commission}
                 </h1>
                 <Text className={styles['responsive-text']} type="secondary">
                   Total Commission paid.
@@ -352,7 +355,7 @@ function Dashboard() {
               <h3 className={styles['responsive-subtitle']}>
                 Order Payment Status
               </h3>
-              <PieChartData />
+              <PieChartData data={data} />
               <Flex justify="space-between">
                 <Flex justify="center" gap="small">
                   <svg
@@ -386,14 +389,14 @@ function Dashboard() {
               <Flex gap="large" vertical>
                 <Flex vertical>
                   <Row gutter={[32, 32]}>
-                    <Col span={12}>
+                    <Col span={24}>
                       <h3 className={styles['responsive-subtitle']}>
                         Orders Diagram
                       </h3>
                     </Col>
                   </Row>
                 </Flex>
-                <BarChartData />
+                <BarChartData data={data} />
               </Flex>
             </Card>
           </Col>
@@ -418,6 +421,9 @@ function Dashboard() {
                   </Button>
                 </Link>
               </Flex>
+            </Col>
+            <Col span={24}>
+              <ProductTable data={latestProducts} />
             </Col>
           </Row>
         </Card>
