@@ -3,6 +3,7 @@ import { ConfigProvider } from 'antd';
 
 import CustomLayout from './components/CustomLayout/CustomLayout';
 import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
 ]);
 
