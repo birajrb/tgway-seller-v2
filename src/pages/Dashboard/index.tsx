@@ -63,7 +63,7 @@ function Dashboard() {
                 icon={<HomeOutlined className={styles.icons} />}
                 iconPosition="end"
               >
-                <span className={`${styles.text} ${styles['responsive-text']}`}>
+                <span className={styles['responsive-text']}>
                   Configure Store
                 </span>
               </Button>

@@ -1,0 +1,65 @@
+.responsive-title {
+  font-size: 16px;
+}
+
+.responsive-subtitle {
+  font-size: 14px;
+}
+
+.responsive-sub {
+  font-size: 12px;
+}
+.responsive-text {
+  font-size: 10px;
+}
+@media (min-width: 768px) {
+  .responsive-title {
+    font-size: 24px;
+  }
+
+  .responsive-subtitle {
+    font-size: 20px;
+  }
+
+  .responsive-sub {
+    font-size: 16px;
+  }
+
+  .responsive-text {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .responsive-title {
+    font-size: 28px;
+  }
+
+  .responsive-subtitle {
+    font-size: 24px;
+  }
+
+  .responsive-sub {
+    font-size: 20px;
+  }
+
+  .responsive-text {
+    font-size: 16px;
+  }
+}
+
+.border {
+  border-bottom: 2px solid;
+  border-color: #0199E6
+}
+
+.button {
+  color: white;
+  background-color: #0199e6;
+  border-color: #0199e6;
+
+}
+
+.borderCol {
+  border: 1px solid #ddd;
+}

@@ -2,7 +2,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 
 import CustomLayout from './components/CustomLayout/CustomLayout';
+import BankAccount from './pages/BankAccount';
 import Dashboard from './pages/Dashboard';
+import SellerProfile from './pages/SellerProfile';
 
 const router = createBrowserRouter([
   {
@@ -11,6 +13,24 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Dashboard />,
+      },
+    ],
+  },
+  {
+    element: <CustomLayout />,
+    children: [
+      {
+        path: '/seller-profile',
+        element: <SellerProfile />,
+      },
+    ],
+  },
+  {
+    element: <CustomLayout />,
+    children: [
+      {
+        path: '/bank-account',
+        element: <BankAccount />,
       },
     ],
   },
@@ -25,11 +45,8 @@ function App() {
         },
       }}
     >
-      <RouterProvider
-        router={router}
-      />
+      <RouterProvider router={router} />
     </ConfigProvider>
-
   );
 }
 

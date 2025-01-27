@@ -32,4 +32,15 @@ const getDashboardLatestProducts = async () => {
   return response;
 };
 
-export { getBankDetail, getDashboardContent, getDashboardLatestProducts, getDashboardOrders };
+const postBankDetail = async (body: any) => {
+  const response = await baseRequest({
+    url: '/seller/payment-method',
+    method: 'POST',
+    body,
+    contentType: '',
+  });
+
+  return response;
+};
+// eslint-disable-next-line max-len
+export { getBankDetail, getDashboardContent, getDashboardLatestProducts, getDashboardOrders, postBankDetail };
