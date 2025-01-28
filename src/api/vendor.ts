@@ -33,14 +33,21 @@ const getDashboardLatestProducts = async () => {
 };
 
 const postBankDetail = async (body: any) => {
+  console.log(body);
   const response = await baseRequest({
     url: '/seller/payment-method',
     method: 'POST',
-    body,
-    contentType: '',
+    body: JSON.stringify(body),
+    contentType: 'application/json',
   });
 
   return response;
 };
 // eslint-disable-next-line max-len
-export { getBankDetail, getDashboardContent, getDashboardLatestProducts, getDashboardOrders, postBankDetail };
+export {
+  getBankDetail,
+  getDashboardContent,
+  getDashboardLatestProducts,
+  getDashboardOrders,
+  postBankDetail,
+};

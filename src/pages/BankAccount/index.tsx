@@ -1,113 +1,147 @@
-import { Button, Card, Col, Flex, Form, Input, Row } from 'antd';
-
+import { Button, Card, Col, Form, Input, Row } from 'antd';
 import styles from './styles.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getBankDetail, postBankDetail } from '@/api/vendor';
-import { QueryClient, useMutation, useQuery } from '@tanstack/react-query';
-import { useForm } from 'react-hook-form';
-import { BankAccountValidators, TBankAccountValidators } from './bankAccount-validators';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  BankAccountValidators,
+  TBankAccountValidators,
+} from './bankAccount-validators';
 
 function BankAccount() {
   const [loading, setLoading] = useState(false);
-  const { data: bankDetail } = useQuery({
+
+  // Fetch bank details with React Query
+  const { data: bankDetail, isLoading: isFetching } = useQuery({
     queryKey: ['payment-method'],
-    queryFn: () => getBankDetail(),
+    queryFn: getBankDetail,
     enabled: true,
   });
+
+  // Initialize form with React Hook Form
   const {
     register,
     handleSubmit,
     reset,
-    clearErrors,
-    formState: { errors },
+    control,
+    formState: { errors, isSubmitting, isDirty },
   } = useForm<TBankAccountValidators>({
     resolver: zodResolver(BankAccountValidators),
   });
+
+  // Populate form with fetched data once available
+  useEffect(() => {
+    if (!isFetching && bankDetail?.data) {
+      reset(bankDetail.data); // Update form values after data is fetched
+    }
+  }, [bankDetail, isFetching, reset]);
+
+  // Mutation to submit bank details
   const createBankMutation = useMutation({
     mutationFn: postBankDetail,
     onMutate: () => setLoading(true),
-
-    onSuccess: async (data: any) => {
+    onSuccess: () => {
       setLoading(false);
-      // toast(data.message);
-      clearErrors();
-      reset();
     },
-    onError: (error: any) => {
+    onError: () => {
       setLoading(false);
     },
   });
+
+  // Form submission handler
+  const onSubmit = (data: TBankAccountValidators) => {
+    createBankMutation.mutate(data);
+  };
+
   return (
     <Row>
       <Col span={24}>
         <Card className={styles.borderCol}>
           <Row gutter={[16, 32]}>
             <Col span={24}>
-              <Flex>
-                <h1
-                  className={`${styles['responsive-title']} ${styles.border}`}
-                >
-                  Bank Account
-                </h1>
-              </Flex>
+              <h1 className={`${styles['responsive-title']} ${styles.border}`}>
+                Bank Account
+              </h1>
             </Col>
             <Col span={24}>
-              <Form layout="vertical">
+              <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
+                {/* Form Fields */}
                 <Row gutter={[32, 16]}>
                   <Col span={12}>
                     <Form.Item
-                      name="bankName"
-                      label={(
-                        <span className={styles['responsive-text']}>
-                          <h4>Bank Name</h4>
-                        </span>
-                      )}
+                      label="Bank Name"
+                      validateStatus={errors.bank_name ? 'error' : ''}
+                      help={errors.bank_name?.message}
                     >
-                      <Input />
+                      <Controller
+                        name="bank_name"
+                        control={control}
+                        render={({ field }) => (
+                          <Input {...field} placeholder="Enter Bank Name" />
+                        )}
+                      />
                     </Form.Item>
                   </Col>
                   <Col span={12}>
                     <Form.Item
-                      name="accountName"
-                      label={(
-                        <span className={styles['responsive-text']}>
-                          <h4>Account Name</h4>
-                        </span>
-                      )}
+                      label="Account Name"
+                      validateStatus={errors.account_name ? 'error' : ''}
+                      help={errors.account_name?.message}
                     >
-                      <Input />
+                      <Controller
+                        name="account_name"
+                        control={control}
+                        render={({ field }) => (
+                          <Input {...field} placeholder="Enter Account Name" />
+                        )}
+                      />
                     </Form.Item>
                   </Col>
                 </Row>
                 <Row gutter={[32, 16]}>
                   <Col span={12}>
                     <Form.Item
-                      name="accountNumber"
-                      label={(
-                        <span className={styles['responsive-text']}>
-                          <h4>Account Number</h4>
-                        </span>
-                      )}
+                      label="Account Number"
+                      validateStatus={errors.account_number ? 'error' : ''}
+                      help={errors.account_number?.message}
                     >
-                      <Input />
+                      <Controller
+                        name="account_number"
+                        control={control}
+                        render={({ field }) => (
+                          <Input
+                            {...field}
+                            placeholder="Enter Account Number"
+                          />
+                        )}
+                      />
                     </Form.Item>
                   </Col>
                   <Col span={12}>
                     <Form.Item
-                      name="branchName"
-                      label={(
-                        <span className={styles['responsive-text']}>
-                          <h4>Branch Name</h4>
-                        </span>
-                      )}
+                      label="Branch Name"
+                      validateStatus={errors.bank_branch ? 'error' : ''}
+                      help={errors.bank_branch?.message}
                     >
-                      <Input />
+                      <Controller
+                        name="bank_branch"
+                        control={control}
+                        render={({ field }) => (
+                          <Input {...field} placeholder="Enter Branch Name" />
+                        )}
+                      />
                     </Form.Item>
                   </Col>
                 </Row>
-                <Button className={`${styles.button} ${styles.text}`}>
-                  <h5>Modify</h5>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={isSubmitting || isFetching}
+                  disabled={!isDirty || loading || isFetching}
+                >
+                  {createBankMutation.isPending ? 'Updating...' : 'Submit'}
                 </Button>
               </Form>
             </Col>
