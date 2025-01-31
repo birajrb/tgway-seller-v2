@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 
-html{
+html {
   box-sizing: border-box;
 }
 
@@ -10,6 +10,20 @@ body {
   padding: 0;
 }
 
-:where(.css-dev-only-do-not-override-7izyzm).ant-menu-light.ant-menu-root.ant-menu-inline{
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+:where(
+    .css-dev-only-do-not-override-7izyzm
+  ).ant-menu-light.ant-menu-root.ant-menu-inline {
   border: none !important;
 }

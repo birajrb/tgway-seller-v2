@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 
 import CustomLayout from './components/CustomLayout/CustomLayout';
+import Dashboard from './pages/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -9,7 +10,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <div>contents</div>,
+        element: <Dashboard />,
       },
     ],
   },

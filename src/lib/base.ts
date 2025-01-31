@@ -18,8 +18,7 @@ const baseRequest = async ({
   contentType,
 }: BaseRequestOptions): Promise<any> => {
   const headers: HeadersInit = {
-    // Authorization: `Bearer ${readLocalStorage('app-auth')}`,
-    Accept: 'application/json',
+    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FkbWluLnRnd2F5b24uYmFuaWwuY29tLm5wL2FwaS9zZWxsZXIvbG9naW4iLCJpYXQiOjE3Mzc2OTczNjQsImV4cCI6MTczODk5MzM2NCwibmJmIjoxNzM3Njk3MzY0LCJqdGkiOiJFUlJmUkx5d1VIY2twOGk4Iiwic3ViIjoiNzYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0SSmLkLw9iSj6AR1pA8mXoQfHzRO-yDjvkaEnMZyKQU',
   };
 
   if (contentType) {
