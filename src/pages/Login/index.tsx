@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { GoogleOutlined } from '@ant-design/icons';
 import { useMutation } from '@tanstack/react-query';
 import { Button, Card, Divider, Flex, Form, Input, Typography } from 'antd';
+import { toast } from 'sonner';
 
 import AuthContext from '@/contexts/auth';
 import { baseRequest } from '@/lib/base';
@@ -30,19 +31,20 @@ function Login() {
   const createPostMutation = useMutation({
     mutationFn: login,
     onSuccess: (data: LoginResponseProps) => {
-      if (data?.data?.user) {
+      if (data.code === 500) {
+        toast.error(data.message);
+      } else if (data) {
         userLogin(data?.data?.token, {
-          role: data.data.user.role,
-          id: data.data.user.id,
-          firstName: data.data.user.first_name,
-          lastName: data.data.user.last_name,
+          id: data.data.seller.id,
+          name: data.data.seller.contact_person_name,
         });
+        toast.message(data.message);
       } else {
-        throw new Error('Invalid login response');
+        toast.error('Some error occurred while logging in');
       }
     },
     onError: (error) => {
-      console.log(error);
+      console.warn(error.message);
     },
   });
 
