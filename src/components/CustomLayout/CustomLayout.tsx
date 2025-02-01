@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, MenuProps, theme } from 'antd';
+import { Button, Flex, Layout, Menu, MenuProps, theme } from 'antd';
 
 import { sidebarItems } from '@/constants';
-import styles from './styles.module.css';
+import AuthContext from '@/contexts/auth';
 
+import ProfileDropdown from './ProfileDropdown';
+
+import styles from './styles.module.css';
 import mobileLogo from '/fav.png';
 import logo from '/logo.png';
 
@@ -16,6 +19,8 @@ const { Header, Sider, Content } = Layout;
 
 function CustomLayout() {
   const navigate = useNavigate();
+
+  const { logout } = useContext(AuthContext);
 
   const [collapsed, setCollapsed] = useState(false);
   const {
@@ -55,16 +60,29 @@ function CustomLayout() {
         />
       </Sider>
       <Layout style={{ marginLeft: collapsed ? 80 : 240 }}>
-        <Header style={{ padding: 0, background: colorBgContainer, position: 'fixed', width: '100vw', zIndex: '10' }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              marginLeft: 15,
-            }}
-          />
+        <Header
+          style={{ padding: 0,
+            background: colorBgContainer,
+            position: 'sticky',
+            width: '100%',
+            top: '0',
+            left: '0',
+            zIndex: '10',
+            display: 'flex',
+            alignItems: 'center' }}
+        >
+          <Flex align="center" justify="space-between" className={styles.flex}>
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: '16px',
+                marginLeft: 15,
+              }}
+            />
+            <ProfileDropdown />
+          </Flex>
         </Header>
         <Content
           style={{
