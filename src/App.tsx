@@ -23,6 +23,15 @@ const getProfile = async () => {
 
 const router = createBrowserRouter([
   {
+    element: <PublicRoutes />,
+    children: [
+      {
+        path: '/login',
+        element: <Login />,
+      },
+    ],
+  },
+  {
     element: <CustomLayout />,
     children: [
       {
@@ -33,15 +42,6 @@ const router = createBrowserRouter([
             element: <Dashboard />,
           },
         ],
-      },
-    ],
-  },
-  {
-    element: <PublicRoutes />,
-    children: [
-      {
-        path: '/login',
-        element: <Login />,
       },
     ],
   },
@@ -82,6 +82,8 @@ function App() {
     queryFn: () => getProfile(),
   });
 
+  console.log(payloadData);
+
   useEffect(() => {
     if (!payloadData) {
       return;
@@ -92,10 +94,8 @@ function App() {
       setReady(true);
     } else {
       setAuth(() => ({
-        firstName: payloadData.data.first_name,
-        lastName: payloadData.data.last_name,
-        role: payloadData.data.role,
         id: payloadData.data.id,
+        name: payloadData.data.contact_person_name,
       }));
       setReady(true);
     }

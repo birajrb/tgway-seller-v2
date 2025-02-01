@@ -3,10 +3,8 @@ import type { MenuProps } from 'antd';
 export type MenuItem = Required<MenuProps>['items'][number];
 
 export interface AuthState {
-    role: string;
     id: number;
-    firstName: string;
-    lastName: string;
+    name: string;
 }
 
 export interface LoginProps{
@@ -16,12 +14,13 @@ export interface LoginProps{
 
 export interface LoginResponseProps{
     data: {
-        user: {
-            role: string;
+        seller: {
             id: number;
-            first_name: string;
-            last_name: string
+            contact_person_name: string;
         },
         token: string
     }
+    code: number;
+    message: string;
+
 }
