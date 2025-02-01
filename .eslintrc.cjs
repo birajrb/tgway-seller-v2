@@ -133,7 +133,7 @@ module.exports = {
     'jsx-a11y/alt-text': 'warn',
     'jsx-a11y/heading-has-content': 'warn',
     'import/no-extraneous-dependencies': 'warn',
-    'import/no-absolute-path': 'warn',
+    'import/no-absolute-path': 0,
     'import/no-unresolved': 'warn',
   },
   overrides: [

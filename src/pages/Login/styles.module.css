@@ -1,0 +1,27 @@
+.container{
+    height: 100svh;
+    background-color: #f4f4f5;
+}
+
+.card{
+    width: 100%;
+    min-width: 375px;
+    max-width: 384px;
+}
+
+.title{
+    padding-bottom: 24px;
+}
+
+.button{
+    width: 100%;
+    font-weight: 500;
+}
+
+.form, .input{
+    width: 100% !important;
+}
+
+.link{
+    margin-left: 5px;
+}

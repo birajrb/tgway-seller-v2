@@ -34,9 +34,4 @@ export const sidebarItems: MenuItem[] = [
     label: 'My Account',
     icon: <CircleUser height={16} width={16} />,
   },
-  {
-    key: '/logout',
-    label: 'Logout',
-    icon: <LogOut height={16} width={16} />,
-  },
 ];
